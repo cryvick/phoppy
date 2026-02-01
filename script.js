@@ -13,15 +13,16 @@ let buttonWidth = 80;
 let fontSize = 20;
 const imagePaths = ['./images/image1.gif','./images/image2.gif','./images/image3.gif','./images/image4.gif','./images/image5.gif','./images/image6.gif','./images/image7.gif'];
 
-//sound
 function playSound(soundPath) {const audio = new Audio(soundPath); audio.play();}
 
-// --- NUOVA LOGICA: Movimento automatico dopo 3 secondi ---
 setTimeout(() => {
-    // 1. Rendi il bottone assoluto così può muoversi liberamente
     noButton.style.position = 'absolute';
+    const randomCornerX = Math.random() > 0.5 ? 20 : window.innerWidth - 100;
+    const randomCornerY = Math.random() > 0.5 ? 20 : window.innerHeight - 100;
     
-    // 2. Avvia una funzione che lo muove continuamente
+    noButton.style.left = `${randomCornerX}px`;
+    noButton.style.top = `${randomCornerY}px`;
+
     setInterval(() => {
          const top = getRandomNumber(window.innerHeight - noButton.offsetHeight);
          const left = getRandomNumber(window.innerWidth - noButton.offsetWidth);
@@ -30,15 +31,14 @@ setTimeout(() => {
             targets: noButton,
             top: `${top}px`,
             left: `${left}px`,
-            easing: "easeOutCirc",
-            duration: 800 // Velocità del movimento (più basso = più veloce)
+            duration: 400,
+            easing: 'easeInOutQuad'
          });
-    }, 1000); // Ogni quanto cambia posizione (1 secondo)
-}, 3000); // Parte dopo 3 secondi (3000ms)
+    }, 600);
+}, 3000);
 
 const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));};
   
-  //raunaway button
   const runawayButtonLogic = (button) => {
     const moveButton = function () {
       if (this.textContent.trim() === "Dì di sì o...") {
@@ -60,20 +60,17 @@ const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));}
       duration: 500,
     });
   
-  //no button
   noButton.addEventListener("click", () => {
     playSound('./sounds/click.mp3');
     if (noClickCount < 4) {
       noClickCount++;
       imageDisplay.src = imagePaths[noClickCount] || "./images/image1.gif";
   
-      //yes button gets thicc
       buttonHeight += 35; buttonWidth += 35; fontSize += 25;
       yesButton.style.height = `${buttonHeight}px`;
       yesButton.style.width = `${buttonWidth}px`;
       yesButton.style.fontSize = `${fontSize}px`;
   
-      //no button text
       const messages = ["No","Sei sicura?","Poppy per favore?","Non farmi questo :(","Dì di sì o...",];
   
       if (noClickCount === 4) {
@@ -94,7 +91,6 @@ const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));}
         newButton.style.fontWeight = "bold";
   
         noButton.replaceWith(newButton);
-  //make no button go zoom with new button
         runawayButtonLogic(newButton);
       } else {
         noButton.textContent = messages[noClickCount];
@@ -102,13 +98,11 @@ const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));}
     }
   });
   
-  //yes button
   yesButton.addEventListener("click", () => {
     playSound('./sounds/click.mp3');
     imageDisplay.remove(); 
     responseButtons.style.display = "none"; 
   
-    //yes page
     valentineQuestion.innerHTML = `
       <img src="./images/image7.gif" alt="Celebration duckie" style="display: block; margin: 0 auto; width: 200px; height: auto;"/>
       Congratulazioni!!<br>
@@ -116,7 +110,6 @@ const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));}
     `;
     valentineQuestion.style.textAlign = "center"; 
   
-    //make image go boing
     const bounceImage = document.createElement("img");
     bounceImage.src = "./images/baddie.jpg";
     bounceImage.alt = "Baddie";
