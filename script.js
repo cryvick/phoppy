@@ -15,13 +15,14 @@ const imagePaths = ['./images/image1.gif','./images/image2.gif','./images/image3
 
 function playSound(soundPath) {const audio = new Audio(soundPath); audio.play();}
 
+// --- LOGICA MOVIMENTO AUTOMATICO ---
 setTimeout(() => {
-    noButton.style.position = 'absolute';
-    const randomCornerX = Math.random() > 0.5 ? 20 : window.innerWidth - 100;
-    const randomCornerY = Math.random() > 0.5 ? 20 : window.innerHeight - 100;
+    // USARE 'fixed' È IL TRUCCO: si sgancia dal contenitore e usa tutto lo schermo
+    noButton.style.position = 'fixed'; 
     
-    noButton.style.left = `${randomCornerX}px`;
-    noButton.style.top = `${randomCornerY}px`;
+    // Lo spostiamo SUBITO in un angolo per evitare sovrapposizioni
+    noButton.style.top = '10px';
+    noButton.style.left = '10px';
 
     setInterval(() => {
          const top = getRandomNumber(window.innerHeight - noButton.offsetHeight);
@@ -71,7 +72,7 @@ const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));}
       yesButton.style.width = `${buttonWidth}px`;
       yesButton.style.fontSize = `${fontSize}px`;
   
-      const messages = ["No","Sei sicura?","Poppy per favore?","Non farmi questo :(","Dì di sì o...",];
+      const messages = ["No","Sei sicura?","Poppy per favore...","Non farmi questo :(","Dì di sì o...",];
   
       if (noClickCount === 4) {
         const newButton = document.createElement("button");
