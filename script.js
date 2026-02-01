@@ -15,31 +15,17 @@ const imagePaths = ['./images/image1.gif','./images/image2.gif','./images/image3
 
 function playSound(soundPath) {const audio = new Audio(soundPath); audio.play();}
 
-// --- FIX DEFINITIVO ---
 setTimeout(() => {
-    // 1. DISATTIVA le transizioni CSS (questo impedisce lo "scivolamento" sopra il Sì)
-    noButton.style.transition = "none"; 
-    
-    // 2. Sgancia il bottone dal flusso normale
-    noButton.style.position = 'fixed'; 
+    noButton.style.transition = "none";
+    noButton.style.position = 'fixed';
+    noButton.style.top = '-100px';
+    noButton.style.left = '-100px';
 
-    // 3. Teletrasportalo ISTANTANEAMENTE lontano (fuori schermo o in un angolo)
-    // Usiamo -200px per essere sicuri che sparisca un attimo prima di riapparire altrove
-    noButton.style.top = '-200px'; 
-    noButton.style.left = '-200px';
-
-    // 4. Avvia il ciclo di movimento
     setInterval(() => {
-         const top = getRandomNumber(window.innerHeight - noButton.offsetHeight);
-         const left = getRandomNumber(window.innerWidth - noButton.offsetWidth);
-         
-         anime({
-            targets: noButton,
-            top: `${top}px`,
-            left: `${left}px`,
-            duration: 400,
-            easing: 'easeInOutQuad'
-         });
+         const top = Math.random() * (window.innerHeight - noButton.offsetHeight);
+         const left = Math.random() * (window.innerWidth - noButton.offsetWidth);
+         noButton.style.top = top + "px";
+         noButton.style.left = left + "px";
     }, 600);
 }, 3000);
 
@@ -77,7 +63,8 @@ const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));}
       yesButton.style.width = `${buttonWidth}px`;
       yesButton.style.fontSize = `${fontSize}px`;
   
-      const messages = ["No","Sei sicura?","Poppy per favore?","Non farmi questo :(","Dì di sì o...",];
+      // --- CORRETTO CON EMOJI ---
+      const messages = ["No","Sei sicura?","Poppy per favore...","Non farmi questo 😢","Dì di sì o...",];
   
       if (noClickCount === 4) {
         const newButton = document.createElement("button");
