@@ -28,7 +28,7 @@ setTimeout(() => {
          noButton.style.top = top + "px";
          noButton.style.left = left + "px";
     }, 1100); // Velocità: 1.1 secondi
-}, 2500);     // Timer: 2.5 secondi
+}, 2200);     // Timer: 2.2 secondi
 
 const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));};
   
@@ -64,7 +64,7 @@ const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));}
       yesButton.style.width = `${buttonWidth}px`;
       yesButton.style.fontSize = `${fontSize}px`;
   
-      const messages = ["No","Sei sicura?","Poppy per favore...","Non farmi questo 😢","Dì di sì o...",];
+      const messages = ["No","Sei sicura?","Poppycì per favore...","Non farmi questo 😢","Dì di sì o...",];
   
       if (noClickCount === 4) {
         const newButton = document.createElement("button");
@@ -161,6 +161,7 @@ const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));}
   
     move();
   }
+
 
 
 
