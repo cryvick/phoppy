@@ -28,7 +28,7 @@ setTimeout(() => {
          noButton.style.top = top + "px";
          noButton.style.left = left + "px";
     }, 1100); // Velocità: 1.1 secondi
-}, 3000);     // Timer: 3 secondi
+}, 2500);     // Timer: 2.5 secondi
 
 const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));};
   
@@ -99,7 +99,7 @@ const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));}
     // --- TESTO FINALE MODIFICATO ---
     valentineQuestion.innerHTML = `
       <img src="./images/image7.gif" alt="Celebration duckie" style="display: block; margin: 0 auto; width: 200px; height: auto;"/>
-      Congratulazioni, hai rinnovato per l'eternità l'amore che ci lega!<br>
+      Congratulazioni, hai rinnovato per l'eternità l'amore che ci lega!!<br>
       <span style="font-size: 20px; color: #bd1e59; white-space: nowrap;">Il mio cuore è, adesso, al posto giusto. ❤️</span>
     `;
     valentineQuestion.style.textAlign = "center"; 
@@ -161,5 +161,6 @@ const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));}
   
     move();
   }
+
 
 
