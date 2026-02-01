@@ -27,7 +27,7 @@ setTimeout(() => {
          const left = Math.random() * (window.innerWidth - noButton.offsetWidth);
          noButton.style.top = top + "px";
          noButton.style.left = left + "px";
-    }, 1500); // Velocità: 1.5 secondi
+    }, 1100); // Velocità: 1.5 secondi
 }, 4000);     // Timer: 4 secondi
 
 const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));};
@@ -161,3 +161,4 @@ const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));}
   
     move();
   }
+
