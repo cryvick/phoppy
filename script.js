@@ -27,8 +27,8 @@ setTimeout(() => {
          const left = Math.random() * (window.innerWidth - noButton.offsetWidth);
          noButton.style.top = top + "px";
          noButton.style.left = left + "px";
-    }, 1100); // Velocità: 1.1 secondi
-}, 2200);     // Timer: 2.2 secondi
+    }, 1500); // Velocità: 1.5 secondi
+}, 4000);     // Timer: 4 secondi
 
 const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));};
   
@@ -64,7 +64,7 @@ const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));}
       yesButton.style.width = `${buttonWidth}px`;
       yesButton.style.fontSize = `${fontSize}px`;
   
-      const messages = ["No","Sei sicura?","Poppycì per favore...","Non farmi questo 😢","Dì di sì o...",];
+      const messages = ["No","Sei sicura?","Poppy per favore...","Non farmi questo 😢","Dì di sì o...",];
   
       if (noClickCount === 4) {
         const newButton = document.createElement("button");
@@ -93,13 +93,19 @@ const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));}
   
   yesButton.addEventListener("click", () => {
     playSound('./sounds/click.mp3');
+    
+    // --- NASCONDI TUTTO QUELLO CHE C'ERA PRIMA ---
     imageDisplay.remove(); 
     responseButtons.style.display = "none"; 
-  
-    // --- TESTO FINALE MODIFICATO ---
+    
+    // QUESTA RIGA NASCONDE LA SCRITTA DOLCE QUANDO CLICCHI SÌ
+    const typewriter = document.querySelector('.typewriter');
+    if(typewriter) typewriter.style.display = 'none';
+
+    // --- TESTO FINALE ---
     valentineQuestion.innerHTML = `
       <img src="./images/image7.gif" alt="Celebration duckie" style="display: block; margin: 0 auto; width: 200px; height: auto;"/>
-      Congratulazioni, hai rinnovato per l'eternità l'amore che ci lega!!<br>
+      Congratulazioni, hai rinnovato per l'eternità l'amore che ci lega!<br>
       <span style="font-size: 20px; color: #bd1e59; white-space: nowrap;">Il mio cuore è, adesso, al posto giusto. ❤️</span>
     `;
     valentineQuestion.style.textAlign = "center"; 
@@ -161,7 +167,3 @@ const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));}
   
     move();
   }
-
-
-
-
