@@ -74,7 +74,7 @@ h2 {
 }
 
 #noButton {
-    position: absolute;
+    /* position: absolute;  <-- RIMOSSO QUESTO! */
     background-color: #ff5a5f;
     color: white;
     font-size: 20px;
