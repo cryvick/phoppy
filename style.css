@@ -127,7 +127,7 @@ img[src="./images/baddie.jpg"] {
     }
 }
 
-/* --- EFFETTO MACCHINA DA SCRIVERE --- */
+/* --- EFFETTO MACCHINA DA SCRIVERE (RALLENTATO) --- */
 .typewriter h1 {
   font-family: 'Courier New', Courier, monospace;
   color: #ff5a5f;
@@ -138,8 +138,10 @@ img[src="./images/baddie.jpg"] {
   margin: 10px auto; 
   letter-spacing: .10em;
   width: 0; 
+  
+  /* QUI HO CAMBIATO DA 3.5s A 5.5s */
   animation: 
-    typing 4s steps(40, end) forwards, 
+    typing 5.5s steps(40, end) forwards, 
     blink-caret .75s step-end infinite;
 }
 
@@ -155,10 +157,9 @@ img[src="./images/baddie.jpg"] {
   50% { border-color: #ff5a5f }
 }
 
-/* Adattamento per cellulari per evitare che la scritta si rompa */
 @media (max-width: 600px) {
     .typewriter h1 {
-        font-size: 0.8rem; /* Font più piccolo su mobile */
+        font-size: 0.8rem;
         letter-spacing: .05em;
     }
 }
