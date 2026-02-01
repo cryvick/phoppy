@@ -15,15 +15,20 @@ const imagePaths = ['./images/image1.gif','./images/image2.gif','./images/image3
 
 function playSound(soundPath) {const audio = new Audio(soundPath); audio.play();}
 
-// --- LOGICA MOVIMENTO AUTOMATICO ---
+// --- FIX DEFINITIVO ---
 setTimeout(() => {
-    // USARE 'fixed' È IL TRUCCO: si sgancia dal contenitore e usa tutto lo schermo
-    noButton.style.position = 'fixed'; 
+    // 1. DISATTIVA le transizioni CSS (questo impedisce lo "scivolamento" sopra il Sì)
+    noButton.style.transition = "none"; 
     
-    // Lo spostiamo SUBITO in un angolo per evitare sovrapposizioni
-    noButton.style.top = '10px';
-    noButton.style.left = '10px';
+    // 2. Sgancia il bottone dal flusso normale
+    noButton.style.position = 'fixed'; 
 
+    // 3. Teletrasportalo ISTANTANEAMENTE lontano (fuori schermo o in un angolo)
+    // Usiamo -200px per essere sicuri che sparisca un attimo prima di riapparire altrove
+    noButton.style.top = '-200px'; 
+    noButton.style.left = '-200px';
+
+    // 4. Avvia il ciclo di movimento
     setInterval(() => {
          const top = getRandomNumber(window.innerHeight - noButton.offsetHeight);
          const left = getRandomNumber(window.innerWidth - noButton.offsetWidth);
@@ -72,7 +77,7 @@ const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));}
       yesButton.style.width = `${buttonWidth}px`;
       yesButton.style.fontSize = `${fontSize}px`;
   
-      const messages = ["No","Sei sicura?","Poppy per favore...","Non farmi questo :(","Dì di sì o...",];
+      const messages = ["No","Sei sicura?","Poppy per favore?","Non farmi questo :(","Dì di sì o...",];
   
       if (noClickCount === 4) {
         const newButton = document.createElement("button");
