@@ -15,7 +15,7 @@ const imagePaths = ['./images/image1.gif','./images/image2.gif','./images/image3
 
 function playSound(soundPath) {const audio = new Audio(soundPath); audio.play();}
 
-// --- MODIFICA TEMPI ---
+// --- TIMER A 4 SECONDI ---
 setTimeout(() => {
     noButton.style.transition = "none";
     noButton.style.position = 'fixed';
@@ -27,8 +27,8 @@ setTimeout(() => {
          const left = Math.random() * (window.innerWidth - noButton.offsetWidth);
          noButton.style.top = top + "px";
          noButton.style.left = left + "px";
-    }, 1400); // <-- MODIFICATO: Si sposta ogni 1.5 secondi (prima era 600ms)
-}, 4500);     // <-- MODIFICATO: Parte dopo 6 secondi (prima era 3000ms)
+    }, 1500); // Velocità: 1.5 secondi
+}, 4000);     // Timer: 4 secondi
 
 const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));};
   
@@ -96,9 +96,10 @@ const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));}
     imageDisplay.remove(); 
     responseButtons.style.display = "none"; 
   
+    // --- TESTO FINALE MODIFICATO ---
     valentineQuestion.innerHTML = `
       <img src="./images/image7.gif" alt="Celebration duckie" style="display: block; margin: 0 auto; width: 200px; height: auto;"/>
-      Congratulazioni!!<br>
+      Congratulazioni, hai rinnovato per l'eternità l'amore che ci lega!<br>
       <span style="font-size: 20px; color: #bd1e59; white-space: nowrap;">Il mio cuore è, adesso, al posto giusto. ❤️</span>
     `;
     valentineQuestion.style.textAlign = "center"; 
@@ -160,4 +161,3 @@ const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));}
   
     move();
   }
-
