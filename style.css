@@ -141,7 +141,7 @@ img[src="./images/baddie.jpg"] {
   
   /* QUI HO CAMBIATO DA 3.5s A 5.5s */
   animation: 
-    typing 5.5s steps(40, end) forwards, 
+    typing 4.5s steps(40, end) forwards, 
     blink-caret .75s step-end infinite;
 }
 
@@ -163,3 +163,4 @@ img[src="./images/baddie.jpg"] {
         letter-spacing: .05em;
     }
 }
+
