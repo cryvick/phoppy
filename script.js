@@ -15,6 +15,7 @@ const imagePaths = ['./images/image1.gif','./images/image2.gif','./images/image3
 
 function playSound(soundPath) {const audio = new Audio(soundPath); audio.play();}
 
+// --- MODIFICA TEMPI ---
 setTimeout(() => {
     noButton.style.transition = "none";
     noButton.style.position = 'fixed';
@@ -26,8 +27,8 @@ setTimeout(() => {
          const left = Math.random() * (window.innerWidth - noButton.offsetWidth);
          noButton.style.top = top + "px";
          noButton.style.left = left + "px";
-    }, 600);
-}, 3000);
+    }, 1500); // <-- MODIFICATO: Si sposta ogni 1.5 secondi (prima era 600ms)
+}, 6000);     // <-- MODIFICATO: Parte dopo 6 secondi (prima era 3000ms)
 
 const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));};
   
@@ -63,7 +64,6 @@ const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));}
       yesButton.style.width = `${buttonWidth}px`;
       yesButton.style.fontSize = `${fontSize}px`;
   
-      // --- CORRETTO CON EMOJI ---
       const messages = ["No","Sei sicura?","Poppy per favore...","Non farmi questo 😢","Dì di sì o...",];
   
       if (noClickCount === 4) {
