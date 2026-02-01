@@ -16,12 +16,32 @@ const imagePaths = ['./images/image1.gif','./images/image2.gif','./images/image3
 //sound
 function playSound(soundPath) {const audio = new Audio(soundPath); audio.play();}
 
+// --- NUOVA LOGICA: Movimento automatico dopo 3 secondi ---
+setTimeout(() => {
+    // 1. Rendi il bottone assoluto così può muoversi liberamente
+    noButton.style.position = 'absolute';
+    
+    // 2. Avvia una funzione che lo muove continuamente
+    setInterval(() => {
+         const top = getRandomNumber(window.innerHeight - noButton.offsetHeight);
+         const left = getRandomNumber(window.innerWidth - noButton.offsetWidth);
+         
+         anime({
+            targets: noButton,
+            top: `${top}px`,
+            left: `${left}px`,
+            easing: "easeOutCirc",
+            duration: 800 // Velocità del movimento (più basso = più veloce)
+         });
+    }, 1000); // Ogni quanto cambia posizione (1 secondo)
+}, 3000); // Parte dopo 3 secondi (3000ms)
+
 const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));};
   
   //raunaway button
   const runawayButtonLogic = (button) => {
     const moveButton = function () {
-      if (this.textContent.trim() === "Say yes or else...") {
+      if (this.textContent.trim() === "Dì di sì o...") {
         const top = getRandomNumber(window.innerHeight - this.offsetHeight);
         const left = getRandomNumber(window.innerWidth - this.offsetWidth);
   
@@ -54,12 +74,12 @@ const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));}
       yesButton.style.fontSize = `${fontSize}px`;
   
       //no button text
-      const messages = ["No","Are you sure?","Babyy please?","Don't do this to me :(","Say yes or else...",];
+      const messages = ["No","Sei sicura?","Poppy per favore?","Non farmi questo :(","Dì di sì o...",];
   
       if (noClickCount === 4) {
         const newButton = document.createElement("button");
         newButton.id = "runawayButton";
-        newButton.textContent = "Say yes or else...";
+        newButton.textContent = "Dì di sì o...";
         newButton.style.position = "absolute";
         const yesButtonRect = yesButton.getBoundingClientRect();
         newButton.style.top = `${yesButtonRect.bottom + 10}px`;
@@ -91,8 +111,8 @@ const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));}
     //yes page
     valentineQuestion.innerHTML = `
       <img src="./images/image7.gif" alt="Celebration duckie" style="display: block; margin: 0 auto; width: 200px; height: auto;"/>
-      Congratulations!!<br>
-      <span style="font-size: 20px; color: #bd1e59;">You have scored a baddie for Valentine's Day! <3</span>
+      Congratulazioni!!<br>
+      <span style="font-size: 20px; color: #bd1e59; white-space: nowrap;">Il mio cuore è, adesso, al posto giusto. ❤️</span>
     `;
     valentineQuestion.style.textAlign = "center"; 
   
@@ -154,4 +174,3 @@ const getRandomNumber = (num) => {return Math.floor(Math.random() * (num + 1));}
   
     move();
   }
-  
